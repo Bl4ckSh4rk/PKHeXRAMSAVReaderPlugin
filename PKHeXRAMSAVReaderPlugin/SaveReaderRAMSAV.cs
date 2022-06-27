@@ -17,7 +17,7 @@ namespace PKHeXRAMSAVReaderPlugin
 
         public bool IsRecognized(int size) => size is SIZEXY or SIZEAO;
 
-        public SaveHandlerSplitResult TrySplit(byte[] input)
+        public SaveHandlerSplitResult TrySplit(ReadOnlySpan<byte> input)
         {
             return new SaveHandlerSplitResult(GetSAV(input), Array.Empty<byte>(), Array.Empty<byte>());
         }
