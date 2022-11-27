@@ -1,15 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>PKHeX RAMSAV Reader Plugin</AssemblyName>
-    <FileVersion>1.0.0.0</FileVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <TargetFramework>net462</TargetFramework>
     <OutputType>Library</OutputType>
     <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="22.6.26" />
+    <PackageReference Include="PKHeX.Core" Version="22.11.26" />
   </ItemGroup>
 
 </Project>

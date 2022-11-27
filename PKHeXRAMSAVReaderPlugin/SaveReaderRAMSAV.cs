@@ -10,26 +10,28 @@ namespace PKHeXRAMSAVReaderPlugin
     /// </summary>
     public class SaveReaderRAMSAV : ISaveReader
     {
-        private const int SIZEXY = 0x70000;
-        private const int SIZEAO = 0x80000;
+        public const int SIZEXY = 0x70000;
+        public const int SIZEAO = 0x80000;
 
-        private const string FILENAME = "ramsav.bin";
+        public const string FILENAME = "ramsav.bin";
 
         public bool IsRecognized(int size) => size is SIZEXY or SIZEAO;
 
-        public SaveHandlerSplitResult TrySplit(ReadOnlySpan<byte> input)
-        {
-            return new SaveHandlerSplitResult(GetSAV(input), Array.Empty<byte>(), Array.Empty<byte>());
-        }
+        public SaveHandlerSplitResult TrySplit(ReadOnlySpan<byte> input) => null;
 
         public SaveFile ReadSaveFile(byte[] data, string path = null)
         {
-            if (path is null || Path.GetFileName(path) is FILENAME)
+            if (IsG6RAMSAV(data))
             {
                 return data.Length is SIZEXY ? new SAV6XY(GetSAV(data)) : data.Length is SIZEAO ? new SAV6AO(GetSAV(data)) : null;
             }
 
             return null;
+        }
+
+        private bool IsG6RAMSAV(ReadOnlySpan<byte> ramsav)
+        {
+            return ReadUInt32LittleEndian(ramsav[0x61B94..]) == SaveUtil.BEEF || ReadUInt32LittleEndian(ramsav[0x723F8..]) == SaveUtil.BEEF;
         }
 
         // https://github.com/kwsch/PKHeX/blob/6ab7ba4bc1f9cb45f3617ce3202e63a0cf9928db/Misc/ram2sav.cs
