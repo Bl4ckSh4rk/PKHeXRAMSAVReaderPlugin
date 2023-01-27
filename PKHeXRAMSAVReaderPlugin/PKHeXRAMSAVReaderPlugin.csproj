@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <AssemblyName>PKHeX RAMSAV Reader Plugin</AssemblyName>
-    <FileVersion>1.1.0.0</FileVersion>
-    <TargetFramework>net462</TargetFramework>
+    <FileVersion>1.2.0.0</FileVersion>
+    <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <LangVersion>10</LangVersion>
+    <LangVersion>11</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="22.11.26" />
+    <PackageReference Include="PKHeX.Core" Version="23.1.26" />
   </ItemGroup>
 
 </Project>

@@ -29,7 +29,7 @@ namespace PKHeXRAMSAVReaderPlugin
             return null;
         }
 
-        private bool IsG6RAMSAV(ReadOnlySpan<byte> ramsav)
+        private static bool IsG6RAMSAV(ReadOnlySpan<byte> ramsav)
         {
             return ReadUInt32LittleEndian(ramsav[0x61B94..]) == SaveUtil.BEEF || ReadUInt32LittleEndian(ramsav[0x723F8..]) == SaveUtil.BEEF;
         }
